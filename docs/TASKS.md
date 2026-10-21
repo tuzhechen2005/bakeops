@@ -29,7 +29,7 @@ bakeops/
 
 ### 周二 10/20 晚（1.5 h）
 
-- [x] **T0 建仓库**（10/21 完成）：`docs/`、LICENSE、README、`pyproject.toml`、`.gitignore`。
+- [x] **T0 建仓库**（10/21 完成）：`docs/`、LICENSE、README、`pyproject.toml`、`.gitignore`、`CLAUDE.md`、`docs/HANDOFF.md`。
 - [ ] **T0b 拉模型**：`ollama pull gemma4:e4b`，备选 `gemma4:12b-it-qat`。
 - [ ] **T0c 回答 `DECISIONS.md` 里的 Q10b、Q-W、Q-N**。
 

@@ -98,7 +98,7 @@ class ScheduleInput(BaseModel):
     previous_ready: dict[str, int] = {}
     request: Request | None = None
     objective: Objective = "initial"
-    time_limit_s: float = 5.0
+    time_limit_s: float = 10.0  # D20: 10 s per solve, split across objectives
     seed: int = 7
 
     def all_steps(self) -> dict[str, Step]:
