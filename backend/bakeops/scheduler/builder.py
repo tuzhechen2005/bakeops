@@ -103,7 +103,7 @@ def build_input(
     previous_ready: dict[str, int] | None = None,
     request: tuple[str, str] | None = None,
     objective: str = "initial",
-    time_limit_s: float = 5.0,
+    time_limit_s: float = 10.0,
 ) -> ScheduleInput:
     check_config(cfg)
     oven = cfg["oven"]
