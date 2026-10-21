@@ -1,0 +1,55 @@
+# BakeOps kitchen config — EXAMPLE / TEST VALUES ONLY.
+# These numbers are for software testing. They are NOT baking advice.
+# Copy to config/kitchen.yaml (git-ignored) and enter your own numbers.
+#
+# where: person      = needs your hands (you can only do one at a time)
+#        oven_proof  = in the oven, oven in proof mode
+#        oven_bake   = in the oven, oven in bake mode
+#        room        = sits on the bench, uses nothing
+# max_wait_after: max minutes between the end of this step and the start of
+#                 the next one. null = can wait as long as needed.
+# confirmed: false marks a number you have not tested yourself. The app shows
+#            these as "not confirmed" in every explanation that depends on them.
+
+day:
+  earliest_start: "06:00"
+  latest_end: "20:00"
+
+oven:
+  proof_slots: 4
+  bake_trays: 2
+  switch_bake_to_proof_min: {value: 25, confirmed: false}
+  switch_proof_to_bake_min: {value: 15, confirmed: false}
+
+dough:
+  mixer_capacity_g: 4000
+  # With one chamber, too many trays from one batch over-proof while they
+  # wait for the oven. 4 trays per batch is impossible with these test values.
+  max_trays_per_batch: {value: 3, confirmed: false}
+  surplus_ratio: 0.0
+  steps:
+    - {id: mix,    where: person,     duration_min: 15, max_wait_after: {value: 0,  confirmed: false}}
+    - {id: bulk,   where: oven_proof, duration_min: 50, slots: 2, max_wait_after: {value: 10, confirmed: false}}
+    - {id: divide, where: person,     duration_min: 10, per_tray_extra_min: 2, max_wait_after: {value: 0, confirmed: false}}
+    - {id: rest,   where: room,       duration_min: 20}
+  # Extra minutes allowed between the end of `rest` and the end of shaping
+  # the batch's last tray, on top of shaping all trays back to back.
+  shape_slack_min: {value: 10, confirmed: false}
+
+tray_steps:  # shared by every product; durations can be overridden per product
+  - {id: shape, where: person,     duration_min: 12, max_wait_after: {value: 10, confirmed: false}}
+  - {id: proof, where: oven_proof, duration_min: 40, max_wait_after: {value: 30, confirmed: false}}
+  - {id: bake,  where: oven_bake,  duration_min: 15, max_wait_after: {value: 0,  confirmed: false}}
+  - {id: cool,  where: room,       duration_min: 20}
+
+packaging:
+  per_order_min: 3
+
+products:
+  - {id: red_bean,   name_zh: 红豆包,   aliases: [红豆, 红豆面包], piece_dough_g: 60, pieces_per_tray: 12}
+  - {id: cheese,     name_zh: 奶酪包,   aliases: [奶酪, 芝士包],   piece_dough_g: 60, pieces_per_tray: 12}
+  - {id: pork_floss, name_zh: 肉松包,   aliases: [肉松],           piece_dough_g: 60, pieces_per_tray: 12}
+  - {id: milk_roll,  name_zh: 奶油餐包, aliases: [餐包, 奶油包],   piece_dough_g: 60, pieces_per_tray: 12}
+
+policy:
+  locked_after_order: [change_quantity, change_product]

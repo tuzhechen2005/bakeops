@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+build/
+dist/
+
+# Real kitchen numbers and data stay on the baker's machine
+config/kitchen.yaml
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Eval outputs (commit only the final holdout table, by hand)
+eval/results/
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

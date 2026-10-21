@@ -1,0 +1,16 @@
+{
+  "_note": "Shared context for eval items. All names are made up.",
+  "now": "10:30",
+  "open": "06:00",
+  "close": "20:00",
+  "customers": {
+    "c_wang":  {"display_name": "王五",   "orders": [{"id": "w1", "summary": "肉松包×8", "ready_at": "11:40", "items": {"w1i1": "肉松包×8"}}]},
+    "c_zhou":  {"display_name": "周老师", "orders": [
+                 {"id": "z1", "summary": "奶酪包×4, 奶油餐包×6", "ready_at": "13:20", "items": {"z1i1": "奶酪包×4", "z1i2": "奶油餐包×6"}},
+                 {"id": "z2", "summary": "红豆包×2", "ready_at": "15:05", "items": {"z2i1": "红豆包×2"}}]},
+    "c_zhang": {"display_name": "张三",   "orders": [{"id": "zs1", "summary": "红豆包×4, 奶酪包×4", "ready_at": "12:10", "items": {"zs1i1": "红豆包×4", "zs1i2": "奶酪包×4"}}]},
+    "c_li":    {"display_name": "李四",   "orders": [{"id": "l1", "summary": "奶酪包×6", "ready_at": "12:10", "items": {"l1i1": "奶酪包×6"}}]},
+    "c_zhao6": {"display_name": "赵六",   "orders": []},
+    "c_sun":   {"display_name": "孙七",   "orders": []}
+  }
+}
